@@ -8,13 +8,7 @@ module Ocr
       @lines = lines
     end
 
-    def empty?
-      (lines[0] == '' && lines[1] == '' && lines[2] == '')
-    end
-
     def value
-      return nil if empty?
-
       return 0 if zero?
 
       return 1 if one?
@@ -47,9 +41,9 @@ module Ocr
     end
 
     def one?
-      lines[0] == ' ' &&
-        lines[1] == '|' &&
-        lines[2] == '|'
+      lines[0] == '   ' &&
+        lines[1] == '  |' &&
+        lines[2] == '  |'
     end
 
     def two?
@@ -59,9 +53,9 @@ module Ocr
     end
 
     def three?
-      lines[0] == '_ ' &&
-        lines[1] == '_|' &&
-        lines[2] == '_|'
+      lines[0] == ' _ ' &&
+        lines[1] == ' _|' &&
+        lines[2] == ' _|'
     end
 
     def four?
@@ -83,9 +77,9 @@ module Ocr
     end
 
     def seven?
-      lines[0] == '_ ' &&
-        lines[1] == ' |' &&
-        lines[2] == ' |'
+      lines[0] == ' _ ' &&
+        lines[1] == '  |' &&
+        lines[2] == '  |'
     end
 
     def eight?

@@ -15,9 +15,9 @@ FactoryBot.define do
     end
 
     trait :one do
-      line_1 { ' ' }
-      line_2 { '|' }
-      line_3 { '|' }
+      line_1 { '   ' }
+      line_2 { '  |' }
+      line_3 { '  |' }
     end
 
     trait :two do
@@ -27,9 +27,9 @@ FactoryBot.define do
     end
 
     trait :three do
-      line_1 { '_ ' }
-      line_2 { '_|' }
-      line_3 { '_|' }
+      line_1 { ' _ ' }
+      line_2 { ' _|' }
+      line_3 { ' _|' }
     end
 
     trait :four do
@@ -51,9 +51,9 @@ FactoryBot.define do
     end
 
     trait :seven do
-      line_1 { '_ ' }
-      line_2 { ' |' }
-      line_3 { ' |' }
+      line_1 { ' _ ' }
+      line_2 { '  |' }
+      line_3 { '  |' }
     end
 
     trait :eight do

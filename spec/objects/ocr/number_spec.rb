@@ -5,33 +5,13 @@ require 'rails_helper'
 RSpec.describe Ocr::Number do
   let(:number) { described_class.new(lines) }
 
-  describe '.empty?' do
-    subject { number.empty? }
-
-    context 'when number is empty' do
-      let(:lines) do
-        ['', '', '']
-      end
-
-      it { is_expected.to eq(true) }
-    end
-
-    context 'when number is not empty' do
-      let(:lines) do
-        [' ', '|', '|']
-      end
-
-      it { is_expected.to eq(false) }
-    end
-  end
-
   describe '.value' do
     subject { number.value }
 
     context 'when is empty' do
       let(:lines) { ['', '', ''] }
 
-      it { is_expected.to eq(nil) }
+      it { is_expected.to eq('?') }
     end
 
     context 'when it is value 0' do
@@ -49,9 +29,9 @@ RSpec.describe Ocr::Number do
     context 'when it is value 1' do
       let(:lines) do
         [
-          ' ',
-          '|',
-          '|'
+          '   ',
+          '  |',
+          '  |'
         ]
       end
 
@@ -73,9 +53,9 @@ RSpec.describe Ocr::Number do
     context 'when it is value 3' do
       let(:lines) do
         [
-          '_ ',
-          '_|',
-          '_|'
+          ' _ ',
+          ' _|',
+          ' _|'
         ]
       end
 
@@ -121,9 +101,9 @@ RSpec.describe Ocr::Number do
     context 'when it is value 7' do
       let(:lines) do
         [
-          '_ ',
-          ' |',
-          ' |'
+          ' _ ',
+          '  |',
+          '  |'
         ]
       end
 

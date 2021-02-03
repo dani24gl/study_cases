@@ -163,7 +163,7 @@ RSpec.describe Ocr::Number do
         ]
       end
 
-      it { is_expected.to eq(nil) }
+      it { is_expected.to eq('?') }
     end
   end
 end

@@ -67,5 +67,11 @@ FactoryBot.define do
       line_2 { '|_|' }
       line_3 { '  |' }
     end
+
+    trait :invalid do
+      line_1 { '___' }
+      line_2 { '|| ' }
+      line_3 { '_| ' }
+    end
   end
 end

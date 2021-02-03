@@ -14,10 +14,7 @@ module Ocr
       output = []
       entries.each do |entry|
         line = new_line(entry)
-        line_output = line.value
-
-        line_output += ' (Invalid)' unless line.valid?
-
+        line_output = line.output
         output.push(line_output)
 
         puts line_output
@@ -33,18 +30,23 @@ module Ocr
     end
 
     def new_line(entry)
+      numbers = calculate_numbers(entry)
+      numbers = remove_empty_places(numbers)
+      Ocr::Line.new(numbers)
+    end
+
+    def calculate_numbers(entry)
       numbers = []
       current_position = 0
 
       (0..LINE_LENGTH - 1).each do |i|
-        add_number(numbers, entry, current_position, index) if space_found?(entry, i)
-        current_position = i + 1
+        if space_found?(entry, i)
+          numbers.push(new_number(entry, current_position, i - 1))
+          current_position = i + 1
+        end
       end
 
       add_last_number(numbers, entry, current_position)
-
-      numbers = remove_empty_places(numbers)
-      Ocr::Line.new(numbers)
     end
 
     def space_found?(entry, char_position)
@@ -59,10 +61,6 @@ module Ocr
                         entry[1][current_position..char_position],
                         entry[2][current_position..char_position]
                       ])
-    end
-
-    def add_number(numbers, entry, current_position, index)
-      numbers.push(new_number(entry, current_position, index - 1))
     end
 
     def add_last_number(numbers, entry, current_position)

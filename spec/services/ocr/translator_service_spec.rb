@@ -16,6 +16,10 @@ RSpec.describe Ocr::TranslatorService do
     " _   _   _   _  _                 \n" \
     "|_| |_| | | |_   | | | | |        \n" \
     "|_|  _| |_| |_|  | | | | |        \n" \
+    "\n" \
+    " _   _   _      _                 \n" \
+    "|_| ||| | |  _   | | | | |        \n" \
+    "|_|  _| |_| |_|  | | | | |        \n" \
     "\n"
   end
 
@@ -24,7 +28,7 @@ RSpec.describe Ocr::TranslatorService do
 
     it 'expects to return the numbers translated' do
       expect(subject).to eq(
-        "345882865\n123451111 (Invalid)\n890671111 (Invalid)"
+        "345882865\n123451111 (ERR)\n890671111 (ERR)\n8?0?71111 (ILL)"
       )
     end
   end

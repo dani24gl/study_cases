@@ -35,7 +35,7 @@ module Ocr
 
       return 9 if nine?
 
-      nil
+      '?'
     end
 
     private

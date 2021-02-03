@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Ocr::Line do
@@ -5,7 +7,7 @@ RSpec.describe Ocr::Line do
   let(:numbers) do
     [digit_1, digit_2, digit_3, digit_4, digit_5, digit_6, digit_7, digit_8, digit_9]
   end
-  
+
   describe '.valid?' do
     subject { line.valid? }
 

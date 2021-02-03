@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Ocr::TranslatorService do
   let(:translator_service) { Ocr::TranslatorService.new(file_content) }
   let(:file_content) do
-      "_       _   _   _   _   _   _   _ \n" \
-      "_| |_| |_  |_| |_|  _| |_| |_  |_ \n" \
-      "_|   |  _| |_| |_| |_  |_| |_|  _|\n" \
-      "\n" \
-      "   _  _       _                   \n" \
-      "|  _| _| |_| |_  | | | |          \n" \
-      "| |_  _|   |  _| | | | |          \n" \
-      "\n" \
-      " _   _   _   _  _                 \n" \
-      "|_| |_| | | |_   | | | | |        \n" \
-      "|_|  _| |_| |_|  | | | | |        \n" \
-      "\n"
+    "_       _   _   _   _   _   _   _ \n" \
+    "_| |_| |_  |_| |_|  _| |_| |_  |_ \n" \
+    "_|   |  _| |_| |_| |_  |_| |_|  _|\n" \
+    "\n" \
+    "   _  _       _                   \n" \
+    "|  _| _| |_| |_  | | | |          \n" \
+    "| |_  _|   |  _| | | | |          \n" \
+    "\n" \
+    " _   _   _   _  _                 \n" \
+    "|_| |_| | | |_   | | | | |        \n" \
+    "|_|  _| |_| |_|  | | | | |        \n" \
+    "\n"
   end
 
   describe '.to_numbers' do

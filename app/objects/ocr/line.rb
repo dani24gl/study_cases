@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Ocr
   class Line
-    attr_reader :numbers, :value
+    attr_reader :numbers
 
     def initialize(numbers)
       @numbers = numbers
@@ -13,9 +15,9 @@ module Ocr
     def valid?
       remainder = value.to_i.digits.each.with_index(1).map do |n, i|
         n * i
-      end.reduce(0, :+)
+      end.reduce(0, :+) % 11
 
-      remainder % 11 == 0
+      remainder.zero?
     end
   end
 end

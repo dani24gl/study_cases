@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ocr
   class Number
     attr_reader :lines
@@ -7,8 +9,7 @@ module Ocr
     end
 
     def empty?
-      (lines[0] == '' && lines[1] == '' && lines[2] == '') ||
-      (lines[0] == ' ' && lines[1] == ' ' && lines[2] == ' ')
+      (lines[0] == '' && lines[1] == '' && lines[2] == '')
     end
 
     def value
@@ -41,62 +42,62 @@ module Ocr
 
     def zero?
       lines[0] == ' _ ' &&
-      lines[1] == '| |' &&
-      lines[2] == '|_|'
+        lines[1] == '| |' &&
+        lines[2] == '|_|'
     end
 
     def one?
       lines[0] == ' ' &&
-      lines[1] == '|' &&
-      lines[2] == '|'
+        lines[1] == '|' &&
+        lines[2] == '|'
     end
 
     def two?
       lines[0] == ' _ ' &&
-      lines[1] == ' _|' &&
-      lines[2] == '|_ '
+        lines[1] == ' _|' &&
+        lines[2] == '|_ '
     end
 
     def three?
       lines[0] == '_ ' &&
-      lines[1] == '_|' &&
-      lines[2] == '_|'
+        lines[1] == '_|' &&
+        lines[2] == '_|'
     end
 
     def four?
       lines[0] == '   ' &&
-      lines[1] == '|_|' &&
-      lines[2] == '  |'
+        lines[1] == '|_|' &&
+        lines[2] == '  |'
     end
 
     def five?
       lines[0] == ' _ ' &&
-      lines[1] == '|_ ' &&
-      lines[2] == ' _|'
+        lines[1] == '|_ ' &&
+        lines[2] == ' _|'
     end
 
     def six?
       lines[0] == ' _ ' &&
-      lines[1] == '|_ ' &&
-      lines[2] == '|_|'
+        lines[1] == '|_ ' &&
+        lines[2] == '|_|'
     end
 
     def seven?
       lines[0] == '_ ' &&
-      lines[1] == ' |' &&
-      lines[2] == ' |'
+        lines[1] == ' |' &&
+        lines[2] == ' |'
     end
 
     def eight?
       lines[0] == ' _ ' &&
-      lines[1] == '|_|' &&
-      lines[2] == '|_|'
+        lines[1] == '|_|' &&
+        lines[2] == '|_|'
     end
 
     def nine?
       lines[0] == ' _ ' &&
-      lines[1] == '|_|' &&
-      lines[2] == ' _|'
+        lines[1] == '|_|' &&
+        lines[2] == ' _|'
     end
   end
 end

@@ -1,0 +1,32 @@
+Metrics/AbcSize:
+  Exclude:
+    - app/objects/ocr/number.rb
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - spec/**/*
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/objects/ocr/number.rb
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - db/seeds.rb
+    - config/**/*
+
+Metrics/MethodLength:
+  Exclude:
+    - app/objects/ocr/number.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/objects/ocr/number.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false

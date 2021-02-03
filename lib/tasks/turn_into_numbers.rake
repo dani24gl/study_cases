@@ -1,10 +1,12 @@
 namespace :ocr do
-  desc "Reads a file with 4 lines entries and 27 chars per line, and turn it into numbers"
+  desc "Reads a file with 4 lines entries and 35 chars per line," \
+       'and turn it into numbers'
 
   task :turn_into_numbers => :environment do
-    puts "Enter your file path to be translated to numbers:"
+    puts 'Enter your file path to be translated to numbers (35 chars per line):'
     # file_path = STDIN.gets.strip
     puts 'public/example_file_1.doc'
+
     file_path = 'public/example_file_1.doc'
 
     begin

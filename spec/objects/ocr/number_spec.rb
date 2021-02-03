@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ocr::Number do
-  let(:number) { Ocr::Number.new(lines) }
+  let(:number) { described_class.new(lines) }
   
   describe '.empty?' do
     subject { number.empty? }

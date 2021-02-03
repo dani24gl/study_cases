@@ -3,13 +3,17 @@ require 'rails_helper'
 RSpec.describe Ocr::TranslatorService do
   let(:translator_service) { Ocr::TranslatorService.new(file_content) }
   let(:file_content) do
-      "   _  _       _           \n" \
-      "|  _| _| |_| |_  | | | |  \n" \
-      "| |_  _|   |  _| | | | |  \n" \
+      "_       _   _   _   _   _   _   _ \n" \
+      "_| |_| |_  |_| |_|  _| |_| |_  |_ \n" \
+      "_|   |  _| |_| |_| |_  |_| |_|  _|\n" \
       "\n" \
-      " _   _   _   _  _         \n" \
-      "|_| |_| | | |_   | | | | |\n" \
-      "|_|  _| |_| |_|  | | | | |\n" \
+      "   _  _       _                   \n" \
+      "|  _| _| |_| |_  | | | |          \n" \
+      "| |_  _|   |  _| | | | |          \n" \
+      "\n" \
+      " _   _   _   _  _                 \n" \
+      "|_| |_| | | |_   | | | | |        \n" \
+      "|_|  _| |_| |_|  | | | | |        \n" \
       "\n"
   end
 
@@ -18,7 +22,7 @@ RSpec.describe Ocr::TranslatorService do
 
     it 'expects to return the numbers translated' do
       expect(subject).to eq(
-        "123451111\n890671111"
+        "345882865\n123451111 (Invalid)\n890671111 (Invalid)"
       )
     end
   end

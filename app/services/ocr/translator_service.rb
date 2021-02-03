@@ -1,6 +1,6 @@
 module Ocr
   class TranslatorService
-    LINE_LENGTH = 27
+    LINE_LENGTH = 35
 
     attr_reader :file
 
@@ -9,14 +9,21 @@ module Ocr
     end
 
     def to_numbers
-      all_numbers = []
+      output = []
       entries.each do |entry|
-        output = numbers(entry).map(&:value).join
-        all_numbers.push(output)
-        puts output
+        line = new_line(entry)
+        line_output = line.value
+
+        unless line.valid?
+          line_output += ' (Invalid)'
+        end
+
+        output.push(line_output)
+
+        puts line_output
       end
 
-      all_numbers.join("\n")
+      output.join("\n")
     end
 
     private
@@ -25,7 +32,7 @@ module Ocr
       file.in_groups_of(4)
     end
 
-    def numbers(entry)
+    def new_line(entry)
       numbers = []
       current_position = 0
 
@@ -38,7 +45,8 @@ module Ocr
 
       add_last_number(numbers, entry, current_position)
 
-      remove_empty_places(numbers)
+      numbers = remove_empty_places(numbers)
+      Ocr::Line.new(numbers)
     end
 
     def space_found?(entry, char_position)

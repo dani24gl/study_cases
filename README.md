@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Challenge: Kinsurance OCR
 
-Things you may want to cover:
+* Implemented the 4 study cases
 
-* Ruby version
+## Instructions
+- run `bundle install`
+- run the rake task to test the example_file_1.doc `rake ocr:turn_into_numbers`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Tests
+If you want to run all the tests just run `rspec .`

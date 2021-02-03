@@ -14,7 +14,7 @@ namespace :ocr do
     begin
       file = File.read(file_path)
       puts 'File read'
-      puts 'Starting conversion'
+      puts 'Starting conversion...'
 
       Ocr::TranslatorService.new(file).to_numbers
     rescue Errno::ENOENT

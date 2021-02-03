@@ -2,6 +2,8 @@
 
 module Ocr
   class Line
+    include ChecksumHelper
+
     attr_reader :numbers
 
     def initialize(numbers)
@@ -13,9 +15,15 @@ module Ocr
     end
 
     def output
-      return "#{value} (ILL)" if invalid_numbers?
+      if invalid_numbers?
+        new_output = new_output_from_invalid_numbers
+        return new_output unless new_output.nil?
+      end
 
-      return "#{value} (ERR)" if invalid_checksum?
+      if invalid_checksum?(value.to_i)
+        new_output = new_output_from_invalid_checksum
+        return new_output unless new_output.nil?
+      end
 
       value
     end
@@ -26,14 +34,28 @@ module Ocr
       value.include?('?')
     end
 
-    def invalid_checksum?
-      return true if value.length != 9
+    def guesses
+      @guesses ||= Ocr::GuessingService.new(self).guess
+    end
 
-      remainder = value.to_i.digits.each.with_index(1).map do |n, i|
-        n * i
-      end.reduce(0, :+) % 11
+    def new_output_from_invalid_numbers
+      return "#{value} (ILL)" if guesses.count.zero?
 
-      !remainder.zero?
+      return value.to_s if guesses.count == 1
+
+      return "#{value} (AMB)" if guesses.count > 1
+
+      nil
+    end
+
+    def new_output_from_invalid_checksum
+      return "#{value} (ERR)" if guesses.count.zero?
+
+      return guesses[0].to_s if guesses.count == 1
+
+      return "#{value} (AMB)" if guesses.count > 1
+
+      nil
     end
   end
 end

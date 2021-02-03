@@ -65,13 +65,19 @@ FactoryBot.define do
     trait :nine do
       line_1 { ' _ ' }
       line_2 { '|_|' }
-      line_3 { '  |' }
+      line_3 { ' _|' }
     end
 
     trait :invalid do
       line_1 { '___' }
       line_2 { '|| ' }
       line_3 { '_| ' }
+    end
+
+    trait :invalid_recoverable do
+      line_1 { '   ' }
+      line_2 { '|_|' }
+      line_3 { '   ' }
     end
   end
 end

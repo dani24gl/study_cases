@@ -23,17 +23,23 @@ RSpec.describe Ocr::Line do
       let(:digit_9) { build(:numbers, :five) }
 
       it { is_expected.to eq('345882865') }
-
-      context 'when the digits lenght are different than 9' do
-        let(:digit_1) { build(:numbers, :one) }
-        let(:digit_2) { build(:numbers, :five) }
-        let(:numbers) { [digit_1, digit_2] }
-
-        it { is_expected.to eq('15 (ERR)') }
-      end
     end
 
     context 'when the checksum is incorrect' do
+      let(:digit_1) { build(:numbers, :three) }
+      let(:digit_2) { build(:numbers, :three) }
+      let(:digit_3) { build(:numbers, :three) }
+      let(:digit_4) { build(:numbers, :three) }
+      let(:digit_5) { build(:numbers, :three) }
+      let(:digit_6) { build(:numbers, :three) }
+      let(:digit_7) { build(:numbers, :three) }
+      let(:digit_8) { build(:numbers, :three) }
+      let(:digit_9) { build(:numbers, :three) }
+
+      it { is_expected.to eq('333333333 (ERR)') }
+    end
+
+    context 'when there are several alternatives' do
       let(:digit_1) { build(:numbers, :one) }
       let(:digit_2) { build(:numbers, :four) }
       let(:digit_3) { build(:numbers, :five) }
@@ -44,7 +50,7 @@ RSpec.describe Ocr::Line do
       let(:digit_8) { build(:numbers, :six) }
       let(:digit_9) { build(:numbers, :five) }
 
-      it { is_expected.to eq('145882865 (ERR)') }
+      it { is_expected.to eq('145882865 (AMB)') }
     end
 
     context 'when there are invalid digits' do

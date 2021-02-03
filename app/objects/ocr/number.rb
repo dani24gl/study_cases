@@ -33,6 +33,8 @@ module Ocr
       return 8 if eight?
 
       return 9 if nine?
+
+      nil
     end
 
     private

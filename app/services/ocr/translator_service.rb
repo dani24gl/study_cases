@@ -9,9 +9,14 @@ module Ocr
     end
 
     def to_numbers
+      all_numbers = []
       entries.each do |entry|
-        puts numbers(entry).map(&:value).join
+        output = numbers(entry).map(&:value).join
+        all_numbers.push(output)
+        puts output
       end
+
+      all_numbers.join("\n")
     end
 
     private
